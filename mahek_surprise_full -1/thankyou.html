@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Thank you — Ved</title><link rel="stylesheet" href="css/style.css" /></head><body>
+<canvas id="confettiCanvas" class="confetti"></canvas>
+<div class='hearts' id='hearts-wrap'></div>
+<div class="container fade-in">
+  <div class="header">
+    <div class="logo">V&lt;3M</div>
+    <div><div class="h1">For Mahek — from Ved</div><div class="lead">A little interactive letter — click through with love</div></div>
+  </div>
+  <main style="margin-top:14px">
+    
+<div class="card">
+  <div class="title">Thank you for taking the time to read this…</div>
+  <div class="message">I love you forever, my buttercup. Always have. Always will.</div>
+  <div style="margin-top:12px"><button class="big-btn" id="endIt">End — shower with flowers & balloons</button></div>
+</div>
+<script>document.getElementById('endIt').addEventListener('click',()=>{launchConfetti();setTimeout(()=>alert('All done — send this to Mahek ❤️'),900)});</script>
+
+  </main>
+  <footer style="margin-top:18px;text-align:center;color:var(--muted);font-size:13px">Open these files in a browser. Replace assets/music.mp3 with Duniya (mp3) to enable background music.</footer>
+</div>
+<script src="assets/common.js"></script>
+<script src="assets/enhance.js"></script>
+<script></script>
+
+<style>
+body {
+  background: linear-gradient(120deg, #2b1055, #7597de);
+  margin:0; padding:0; color:#fff; font-family: Arial, sans-serif;
+  overflow-x:hidden;
+}
+.stars {
+  position:fixed; inset:0;
+  background:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px);
+  background-size:100px 100px,200px 200px;
+  background-position:0 0,50px 100px;
+  animation: twinkle 6s infinite linear;
+  opacity:0.3;
+  pointer-events:none;
+  z-index:0;
+}
+@keyframes twinkle {
+  0% {opacity:.2;} 50% {opacity:.4;} 100% {opacity:.2;}
+}
+.particle {
+  position:fixed;
+  left:50%;
+  top:100%;
+  width:36px; height:36px;
+  border-radius:50%;
+  opacity:0.9;
+  z-index:5;
+  pointer-events:none;
+  animation: rise linear infinite;
+}
+@keyframes rise {
+  0% {transform:translateY(0) scale(.8);}
+  100% {transform:translateY(-140vh) scale(1.1);}
+}
+.fade-in {
+  animation: fadeIn 1.5s ease forwards;
+  opacity:0;
+}
+@keyframes fadeIn {
+  to {opacity:1;}
+}
+</style>
+<div class="stars"></div>
+<div id="particles"></div>
+<audio id="bgAudio" src="assets/duniyaa_song.mp3" autoplay loop></audio>
+
+
+<script>
+
+  
+  setTimeout(()=>{
+    document.body.classList.add('fade-out');
+    setTimeout(()=>{window.location.href="buttercup.html";},2000);
+  },5000);
+</script>
+<style>
+  body {transition: opacity 2s;}
+  body.fade-out {opacity: 0;}
+
+
+// floating particles
+const particles=document.getElementById('particles');
+const types=['❤️','💖','🎈','✨'];
+function makeParticle(){
+  const el=document.createElement('div');
+  el.className='particle';
+  const size=Math.random()*40+20;
+  el.style.width=el.style.height=size+'px';
+  el.style.left=Math.random()*90+'vw';
+  el.style.top='100vh';
+  el.style.fontSize=(size*0.6)+'px';
+  el.style.display='flex';
+  el.style.alignItems='center';
+  el.style.justifyContent='center';
+  el.innerText=types[Math.floor(Math.random()*types.length)];
+  el.style.opacity=(Math.random()*0.6)+0.4;
+  el.style.animationDuration=(8+Math.random()*8)+'s';
+  particles.appendChild(el);
+  setTimeout(()=>{el.remove();},20000);
+}
+setInterval(makeParticle,1000);
+</script>
+
+</body></html>

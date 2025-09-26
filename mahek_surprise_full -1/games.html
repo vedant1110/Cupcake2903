@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Games — Ved</title><link rel="stylesheet" href="css/style.css" /></head><body>
+<canvas id="confettiCanvas" class="confetti"></canvas>
+<div class='hearts' id='hearts-wrap'></div>
+<div class="container fade-in">
+  <div class="header">
+    <div class="logo">V&lt;3M</div>
+    <div><div class="h1">For Mahek — from Ved</div><div class="lead">A little interactive letter — click through with love</div></div>
+  </div>
+  <main style="margin-top:14px">
+    
+<div class="card">
+  <h3 style="margin-top:0">Games — Page 1</h3>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+    <div class="card">
+      <h4>Spin the wheel</h4>
+      <div id="wheelRes" class="message muted">Click spin</div>
+      <div style="margin-top:8px"><button class="big-btn" id="spin">Spin</button></div>
+    </div>
+    <div class="card">
+      <h4>Truth or Dare</h4>
+      <div id="tdRes" class="message muted">Pick Truth or Dare</div>
+      <div style="margin-top:8px"><button class="big-btn" id="truth">Truth</button> <button class="big-btn" id="dare">Dare</button></div>
+    </div>
+    <div class="card">
+      <h4>Find my heart</h4>
+      <div id="findRes" class="message muted">Tap to reveal</div>
+      <div style="margin-top:8px"><button class="big-btn" id="reveal">Reveal</button></div>
+    </div>
+    <div class="card">
+      <h4>Love dice</h4>
+      <div id="diceRes" class="message muted">Roll to get a romantic action</div>
+      <div style="margin-top:8px"><button class="big-btn" id="roll">Roll</button></div>
+    </div>
+  </div>
+  <div style="margin-top:12px;text-align:center"><a href="games2.html"><button class="big-btn">More games</button></a></div>
+</div>
+
+<!-- popup template (global) -->
+<div id="game-sounds" style="display:none">
+  <audio id="sfx-pop" src="assets/sfx/pop.mp3"></audio>
+  <audio id="sfx-ding" src="assets/sfx/ding.mp3"></audio>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const pop = document.getElementById('sfx-pop');
+  const ding = document.getElementById('sfx-ding');
+  const spinOptions = [
+    'Sing a silly song for me',
+    'Bring me chai at 5pm',
+    'Write a tiny love note ❤️',
+    'Send me a pout selfie 😘',
+    'Give me a 10s voice hug'
+  ];
+  const truths = [
+    'When did you first melt for me?',
+    'One secret you never told me',
+    'A memory that makes you smile'
+  ];
+  const dares = [
+    'Send a cheeky selfie',
+    'Record a 15s naughty voice note',
+    'Send three heart emojis right now'
+  ];
+  const dice = [
+    'Good morning text',
+    'Surprise chai',
+    'A long call about memories',
+    'A silly poem recorded as audio'
+  ];
+
+  document.getElementById('spin').addEventListener('click',()=>{
+    const r = spinOptions[Math.floor(Math.random()*spinOptions.length)];
+    document.getElementById('wheelRes').textContent = '🎡 ' + r;
+    try{ pop.play(); }catch(e){}
+  });
+  document.getElementById('truth').addEventListener('click',()=>{
+    const r = truths[Math.floor(Math.random()*truths.length)];
+    document.getElementById('tdRes').textContent = '📝 Truth: ' + r;
+    try{ ding.play(); }catch(e){}
+  });
+  document.getElementById('dare').addEventListener('click',()=>{
+    const r = dares[Math.floor(Math.random()*dares.length)];
+    document.getElementById('tdRes').textContent = '🔥 Dare: ' + r;
+    try{ pop.play(); }catch(e){}
+  });
+  document.getElementById('reveal').addEventListener('click',()=>{
+    document.getElementById('findRes').textContent = '❤️ Found it! You are my heart.';
+    try{ ding.play(); }catch(e){}
+  });
+  document.getElementById('roll').addEventListener('click',()=>{
+    const r = dice[Math.floor(Math.random()*dice.length)];
+    document.getElementById('diceRes').textContent = '🎲 ' + r;
+    try{ pop.play(); }catch(e){}
+  });
+});
+</script>
+
+  </main>
+  <footer style="margin-top:18px;text-align:center;color:var(--muted);font-size:13px">Open these files in a browser. Replace assets/music.mp3 with Duniya (mp3) to enable background music.</footer>
+</div>
+<script src="assets/common.js"></script>
+<script src="assets/enhance.js"></script>
+<script></script>
+
+<style>
+body {
+  background: linear-gradient(120deg, #2b1055, #7597de);
+  margin:0; padding:0; color:#fff; font-family: Arial, sans-serif;
+  overflow-x:hidden;
+}
+.stars {
+  position:fixed; inset:0;
+  background:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px);
+  background-size:100px 100px,200px 200px;
+  background-position:0 0,50px 100px;
+  animation: twinkle 6s infinite linear;
+  opacity:0.3;
+  pointer-events:none;
+  z-index:0;
+}
+@keyframes twinkle {
+  0% {opacity:.2;} 50% {opacity:.4;} 100% {opacity:.2;}
+}
+.particle {
+  position:fixed;
+  left:50%;
+  top:100%;
+  width:36px; height:36px;
+  border-radius:50%;
+  opacity:0.9;
+  z-index:5;
+  pointer-events:none;
+  animation: rise linear infinite;
+}
+@keyframes rise {
+  0% {transform:translateY(0) scale(.8);}
+  100% {transform:translateY(-140vh) scale(1.1);}
+}
+.fade-in {
+  animation: fadeIn 1.5s ease forwards;
+  opacity:0;
+}
+@keyframes fadeIn {
+  to {opacity:1;}
+}
+</style>
+<div class="stars"></div>
+<div id="particles"></div>
+<audio id="bgAudio" src="assets/duniyaa_song.mp3" autoplay loop></audio>
+<script>
+// floating particles
+const particles=document.getElementById('particles');
+const types=['❤️','💖','🎈','✨'];
+function makeParticle(){
+  const el=document.createElement('div');
+  el.className='particle';
+  const size=Math.random()*40+20;
+  el.style.width=el.style.height=size+'px';
+  el.style.left=Math.random()*90+'vw';
+  el.style.top='100vh';
+  el.style.fontSize=(size*0.6)+'px';
+  el.style.display='flex';
+  el.style.alignItems='center';
+  el.style.justifyContent='center';
+  el.innerText=types[Math.floor(Math.random()*types.length)];
+  el.style.opacity=(Math.random()*0.6)+0.4;
+  el.style.animationDuration=(8+Math.random()*8)+'s';
+  particles.appendChild(el);
+  setTimeout(()=>{el.remove();},20000);
+}
+setInterval(makeParticle,1000);
+</script>
+
+</body></html>

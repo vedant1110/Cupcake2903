@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Sorry — Ved</title><link rel="stylesheet" href="css/style.css" /></head><body>
+<canvas id="confettiCanvas" class="confetti"></canvas>
+<div class='hearts' id='hearts-wrap'></div>
+<div class="container fade-in">
+  <div class="header">
+    <div class="logo">V&lt;3M</div>
+    <div><div class="h1">For Mahek — from Ved</div><div class="lead">A little interactive letter — click through with love</div></div>
+  </div>
+  <main style="margin-top:14px">
+    
+<div class="card">
+  <div class="title">I Am Sorry</div>
+  <div class="message">Hey My boo-boo ❤️
+Main kaafi dino se un baaton ka wazan leke jee raha hoon jo maine kabhi keh hi nahi paayi. Jo kehni chahiye thi... par reh gayi. Ab har ek chhoti chhoti baat yaad aati hai — jab aap chup thi aur main samajh nahi paaya, jab aapko pyaar chahiye tha aur main zidd dikhata raha. Jab aap important thi par maine kisi aur cheez ko priority de diya.
+
+Aur ab sirf ek soonaapan hai. Aapki kami har waqt mehsoos hoti hai. Main jaanta hoon — &quot;Sorry&quot; keh dena easy hota hai, lekin asli maafi tab hoti hai jab insaan badalta hai. Aur main waqai badalna chahta hoon, apni galtiyon ko samajhna, aur unhe sudharna chahta hoon.
+
+Mahek, please mujhe maaf kar dijiye. Main gusse mein kabhi kabhi kuch bhi keh deta hoon, bina sochhe samjhe. Aapka dil dukhaya... aur uska guilt mere andar roz kuch todta hai. Aapke chehre ki muskaan ko ignore kiya, aapki raat ke &quot;good night&quot; ko taken for granted liya... aur ab samajh aata hai ki woh sab chhoti baatein kitni badi thi.
+
+Main aapki woh yaadein roz mehsoos karta hoon — woh hansi bina wajah wali, woh time jab hum kahin kho gaye the aur bas ek dusre ko dekhke haste rahe... woh bheed mein aapka haath pakadna. Lagta tha jaise duniya ruk gayi ho.
+
+Main woh pal wapas laana chahta hoon. Lekin iss baar behtar insaan banke. Aapko sunne waala, samajhne waala, feel karne waala. Agar aap mujhe ek chhota sa chance dengi... toh main har din prove karunga ki main sudhar raha hoon. Main chhoti chhoti cheezein yaad rakhunga — aapka favourite song, aapki thakan, aapka silence. Main aapko har roz yeh feel karwana chahta hoon ki you matter... a lot.
+
+Mahek, meri jaan... main akela hoon, galat tha, aur dil se maafi maangta hoon. Mujhe aapki zarurat hai — sirf pyaar ke liye nahi, balki behtar banne ke liye bhi.
+
+If tears come while you read this, let them fall — they are true. If you smile, keep that smile for me and I will spend my days trying to be the reason behind it. I will write small notes, call for no reason, learn your favourite things — because loving you is not a single act, it is the patience to keep showing up.
+
+I am sorry. I am learning. I will try. Always your stupid ideat Ved — forever trying to be better for you. 💖
+</div>
+  <div class="options">
+    <div class="opt"><a href="forgive.html"><button class="big-btn">1. Maaf kiya, tum bhe kya yaad rakhoge?</button></a></div>
+    <div class="opt"><a href="not_forgive.html"><button class="big-btn">2. Nhi kiya maaf, kya kar loge?</button></a></div>
+  </div>
+</div>
+
+  </main>
+  <footer style="margin-top:18px;text-align:center;color:var(--muted);font-size:13px">Open these files in a browser. Replace assets/music.mp3 with Duniya (mp3) to enable background music.</footer>
+</div>
+<script src="assets/common.js"></script>
+<script src="assets/enhance.js"></script>
+<script></script>
+
+<style>
+body {
+  background: linear-gradient(120deg, #2b1055, #7597de);
+  margin:0; padding:0; color:#fff; font-family: Arial, sans-serif;
+  overflow-x:hidden;
+}
+.stars {
+  position:fixed; inset:0;
+  background:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px);
+  background-size:100px 100px,200px 200px;
+  background-position:0 0,50px 100px;
+  animation: twinkle 6s infinite linear;
+  opacity:0.3;
+  pointer-events:none;
+  z-index:0;
+}
+@keyframes twinkle {
+  0% {opacity:.2;} 50% {opacity:.4;} 100% {opacity:.2;}
+}
+.particle {
+  position:fixed;
+  left:50%;
+  top:100%;
+  width:36px; height:36px;
+  border-radius:50%;
+  opacity:0.9;
+  z-index:5;
+  pointer-events:none;
+  animation: rise linear infinite;
+}
+@keyframes rise {
+  0% {transform:translateY(0) scale(.8);}
+  100% {transform:translateY(-140vh) scale(1.1);}
+}
+.fade-in {
+  animation: fadeIn 1.5s ease forwards;
+  opacity:0;
+}
+@keyframes fadeIn {
+  to {opacity:1;}
+}
+</style>
+<div class="stars"></div>
+<div id="particles"></div>
+<audio id="bgAudio" src="assets/duniyaa_song.mp3" autoplay loop></audio>
+
+<script>
+// floating particles
+const particles=document.getElementById('particles');
+const types=['❤️','💖','🎈','✨'];
+function makeParticle(){
+  const el=document.createElement('div');
+  el.className='particle';
+  const size=Math.random()*40+20;
+  el.style.width=el.style.height=size+'px';
+  el.style.left=Math.random()*90+'vw';
+  el.style.top='100vh';
+  el.style.fontSize=(size*0.6)+'px';
+  el.style.display='flex';
+  el.style.alignItems='center';
+  el.style.justifyContent='center';
+  el.innerText=types[Math.floor(Math.random()*types.length)];
+  el.style.opacity=(Math.random()*0.6)+0.4;
+  el.style.animationDuration=(8+Math.random()*8)+'s';
+  particles.appendChild(el);
+  setTimeout(()=>{el.remove();},20000);
+}
+setInterval(makeParticle,1000);
+</script>
+
+</body></html>
